@@ -2,7 +2,7 @@
  * @param {number[]} code
  * @param {number} k
  * @return {number[]}
- * @description 
+ * @description
  * Explain (****)
  * Pre:[2, 4, 9, 3] k = 2
  * At i = 2, j = 1
@@ -15,36 +15,36 @@
  * ex: (6 + 7) mod 6 = 1
  */
 var decrypt = function (code, k) {
-  const r = [];
-  const s = code.length;
-  const d = Math.abs(k);
+    const r = [];
+    const s = code.length;
+    const d = Math.abs(k);
 
-  for (let i = 0; i < s; i++) {
-    r[i] = 0;
-    for (let j = 1; j <= d; j++) {
-      r[i] += code[(s + i + j * (k / d)) % s]; // (****)
+    for (let i = 0; i < s; i++) {
+        r[i] = 0;
+        for (let j = 1; j <= d; j++) {
+            r[i] += code[(s + i + j * (k / d)) % s]; // (****)
+        }
     }
-  }
 
-  return r;
+    return r;
 };
 
 // Test
 console.log({
-  outcome: decrypt([2, 4, 9, 3], 2),
-  pass: decrypt([2, 4, 9, 3], 2).toString() === "13,12,5,6",
+    outcome: decrypt([2, 4, 9, 3], 2),
+    pass: decrypt([2, 4, 9, 3], 2).toString() === "13,12,5,6",
 });
 
 // Test
 console.log({
-  outcome: decrypt([2, 4, 9, 3], 0),
-  pass: decrypt([2, 4, 9, 3], 0).toString() === "0,0,0,0",
+    outcome: decrypt([2, 4, 9, 3], 0),
+    pass: decrypt([2, 4, 9, 3], 0).toString() === "0,0,0,0",
 });
 
 // Test
 console.log({
-  outcome: decrypt([2, 4, 9, 3], -2),
-  pass: decrypt([2, 4, 9, 3], -2).toString() === "12,5,6,13",
+    outcome: decrypt([2, 4, 9, 3], -2),
+    pass: decrypt([2, 4, 9, 3], -2).toString() === "12,5,6,13",
 });
 
 /**

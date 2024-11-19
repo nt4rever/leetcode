@@ -1,42 +1,42 @@
 class Trie {
-  constructor() {
-    this.children = {};
-    this.end = false;
-  }
-
-  // word = 'apple'
-  insert(word) {
-    let currentNode = this;
-    for (let char of word) {
-      if (currentNode.children[char] === undefined) {
-        currentNode.children[char] = new Trie();
-      }
-      currentNode = currentNode.children[char];
+    constructor() {
+        this.children = {};
+        this.end = false;
     }
-    currentNode.end = true;
-  }
 
-  search(word) {
-    let currentNode = this;
-    for (let char of word) {
-      if (currentNode.children[char] === undefined) {
-        return false;
-      }
-      currentNode = currentNode.children[char];
+    // word = 'apple'
+    insert(word) {
+        let currentNode = this;
+        for (let char of word) {
+            if (currentNode.children[char] === undefined) {
+                currentNode.children[char] = new Trie();
+            }
+            currentNode = currentNode.children[char];
+        }
+        currentNode.end = true;
     }
-    return currentNode.end;
-  }
 
-  startsWith(prefix) {
-    let currentNode = this;
-    for (let char of prefix) {
-      if (currentNode.children[char] === undefined) {
-        return false;
-      }
-      currentNode = currentNode.children[char];
+    search(word) {
+        let currentNode = this;
+        for (let char of word) {
+            if (currentNode.children[char] === undefined) {
+                return false;
+            }
+            currentNode = currentNode.children[char];
+        }
+        return currentNode.end;
     }
-    return true;
-  }
+
+    startsWith(prefix) {
+        let currentNode = this;
+        for (let char of prefix) {
+            if (currentNode.children[char] === undefined) {
+                return false;
+            }
+            currentNode = currentNode.children[char];
+        }
+        return true;
+    }
 }
 
 // Test
